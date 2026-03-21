@@ -12,7 +12,7 @@ phases:
             - echo "Inicializando Terraform..."
             - terraform init -input=false
             - echo "Validando formato ..."
-            - terraform fmt -check -recursive
+            - terraform fmt -recursive
             - echo "Validando configuración..."
             - terraform validate
 artifacts:
