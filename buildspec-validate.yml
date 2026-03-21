@@ -8,7 +8,13 @@ phases:
             - sudo yum install -y terraform
     build:
         commands:
-            echo "Fase de build"
+            - cd infra
+            - echo "Inicializando Terraform..."
+            - terraform init -input=false
+            - echo "Validando formato ..."
+            - terraform fmt -check -recursive
+            - echo "Validando configuración..."
+            - terraform validate
 artifacts:
     files:
         - '**/*'
