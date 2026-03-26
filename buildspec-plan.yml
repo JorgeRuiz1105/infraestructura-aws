@@ -13,7 +13,7 @@ phases:
       - echo "Inicializando Terraform..."
       - terraform init -input=false -backend=true
       - echo "Ejecutando Terraform Plan..."
-      - terraform plan -input=false -out=tfplan -var="bucket_name=agv-pipeline-bucket" -var="environment=dev"
+      - terraform plan -input=false -out=tfplan -var="bucket_name=jarm-ejemplo-pipeline" -var="environment=dev"
 
 artifacts:
   files:
