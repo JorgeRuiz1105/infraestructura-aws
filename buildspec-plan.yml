@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - sudo yum install -y yum-utils shadow-utils
+      - sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+      - sudo yum install -y terraform
+
+  build:
+    commands:
+      - cd infra
+      - echo "Inicializando Terraform..."
+      - terraform init -input=false -backend=true
+      - echo "Ejecutando Terraform Plan..."
+      - terraform plan -input=false -out=tfplan -var="bucket_name=agv-pipeline-bucket" -var="environment=dev"
+
+artifacts:
+  files:
+    - '**/*'
